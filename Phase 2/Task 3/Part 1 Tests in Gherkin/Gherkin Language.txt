@@ -1,0 +1,123 @@
+GHERKIN LANGUAGE (GUI TEST CASES)
+
+
+1.Verify Login Page Functionality
+
+Feature: Login Page Functionality
+  As a user
+  I want to log in with valid credentials
+  So I can access the dashboard
+
+  Scenario: Successful login
+    Given I am on the login page
+    When I enter valid username and password
+    And I click the "Login" button
+    Then I should be logged in and redirected to the dashboard
+
+2.Verify Navigation to Dashboard
+
+Feature: Dashboard Navigation
+  As a user
+  I want to easily access the dashboard
+  So I can view important information
+
+  Scenario: Navigate to the dashboard
+    Given I am logged in
+    When I click on the "Dashboard" link in the navigation menu
+    Then I should be taken to the dashboard page
+
+ 3.Check Usability of Dashboard Widgets
+
+Feature: Dashboard Widgets Usability
+  As a user
+  I want to interact with dashboard widgets
+  So I can view data effectively
+
+  Scenario: Interact with widgets
+    Given I am on the dashboard
+    When I interact with various widgets
+    Then the widgets should respond to my actions and display relevant data
+
+
+4. Verify Filtering Functionality
+
+Feature: Filtering Data on Dashboard
+  As a user
+  I want to filter dashboard data
+  So I can view specific information
+
+  Scenario: Apply filters
+    Given I am on the dashboard
+    When I apply filters (e.g., date range, category)
+    Then the dashboard data should be filtered as per the selected criteria
+
+5.Test Data Export Feature
+
+Feature: Data Export from Dashboard
+  As a user
+  I want to export dashboard data
+  So I can analyze it offline
+
+  Scenario: Export data
+    Given I am on the dashboard
+    When I attempt to export dashboard data to CSV or Excel
+    Then the data should be downloadable in the chosen format
+
+
+GHERKIN LANGUAGE (API TEST CASES)
+
+
+1.Verify API Authentication
+
+Feature: API Authentication
+  As a user
+  I want to ensure that the API endpoint requires authentication
+
+  Scenario: Successful API authentication
+    Given I send an authenticated request to the API endpoint
+    Then I should receive a successful response with the requested data
+
+2.Test API Endpoint for Data Retrieval
+
+Feature: Data Retrieval from API
+  As a user
+  I want to test the API's ability to retrieve dashboard data
+
+  Scenario: Retrieve data from the API
+    When I send a GET request to retrieve data
+    Then I should receive JSON data with relevant dashboard information
+
+3.Test API Endpoint for Data Filtering
+
+Feature: Data Filtering through API
+  As a user
+  I want to validate the API's ability to filter data
+
+  Scenario: Filter data using the API
+    When I send a POST request with filter parameters
+    Then I should receive filtered data based on the provided parameters
+
+
+
+ 4.Verify Data Export API
+
+Feature: Data Export from API
+  As a user
+  I want to confirm the functionality of the data export API
+
+  Scenario: Export data using the API
+    When I send a request to export data in a specific format (e.g., CSV)
+    Then I should receive a downloadable file in the chosen format
+
+5.Check API Rate Limiting
+
+
+Feature: API Rate Limiting
+  As a user
+  I want to ensure that the API enforces rate limits
+
+  Scenario: Exceed API rate limit
+    When I send a series of requests to exceed the rate limit
+    Then I should observe that the API enforces rate limits
+
+
