@@ -1,0 +1,14 @@
+import requests
+
+url = "http://localhost:3000/api/feedback"
+
+oversized_attachment = open("path/to/oversized_file.zip", "rb")
+
+response = requests.post(url, files={"attachment": oversized_attachment})
+
+assert response.status_code == 413
+
+api_response = response.json()
+assert "error" in api_response and "Attachment size exceeds the maximum allowed" in api_response["error"]
+
+response.close()
