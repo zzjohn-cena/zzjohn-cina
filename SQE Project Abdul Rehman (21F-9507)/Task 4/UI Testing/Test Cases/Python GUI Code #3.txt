@@ -1,0 +1,18 @@
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+driver.get("http://localhost:3000/")
+
+driver.find_element_by_link_text("Feedback").click()
+
+# Attempt to attach a file with an unsupported format
+file_input = driver.find_element_by_id("feedback_attachment")
+file_input.send_keys("path/to/unsupported_file.exe")
+
+submit_button = driver.find_element_by_id("submit_button")
+submit_button.click()
+
+error_message = driver.find_element_by_id("error_message")
+assert "Unsupported file format. Please use specific formats" in error_message.text
+
+driver.close()

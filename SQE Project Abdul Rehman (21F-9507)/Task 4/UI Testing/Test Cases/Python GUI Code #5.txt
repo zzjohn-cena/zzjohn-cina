@@ -1,0 +1,27 @@
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+driver.get("http://localhost:3000")
+
+driver.find_element_by_link_text("Feedback").click()
+
+# Provide the lowest rating in the feedback form
+rating_input = driver.find_element_by_id("feedback_rating")
+lowest_rating = 1
+rating_input.send_keys(str(lowest_rating))
+
+submit_button = driver.find_element_by_id("submit_button")
+submit_button.click()
+
+# Verify that the form submission is successful
+success_message = driver.find_element_by_id("success_message")
+assert "Feedback submitted successfully" in success_message.text
+
+# Verify that the feedback with the minimum rating is saved in the database
+# Add code here to check for the presence of the feedback with the minimum rating in the database
+
+# Verify that no error messages are displayed
+error_messages = driver.find_elements_by_class_name("error-message")
+assert len(error_messages) == 0
+
+driver.close()

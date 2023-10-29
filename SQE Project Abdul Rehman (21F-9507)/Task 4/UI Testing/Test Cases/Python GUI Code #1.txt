@@ -1,0 +1,29 @@
+from selenium import webdriver
+
+# Launch the Metaverse web application
+driver = webdriver.Chrome()
+driver.get("http://localhost:3000/")
+
+# Test Case: Feedback Submission - Valid Inputs
+
+# Scenario: Submitting feedback with valid inputs
+driver.find_element_by_link_text("Feedback").click()
+
+feedback_textbox = driver.find_element_by_id("feedback_message")
+feedback_textbox.send_keys("This is a valuable feedback.")
+
+rating_input = driver.find_element_by_id("feedback_rating")
+rating_input.send_keys("5")
+
+file_input = driver.find_element_by_id("feedback_attachment")
+file_input.send_keys("path/to/supported_file.txt")
+
+submit_button = driver.find_element_by_id("submit_button")
+submit_button.click()
+
+success_message = driver.find_element_by_id("success_message")
+assert "Feedback submitted successfully" in success_message.text
+
+# Close the web browser
+driver.close()
+	

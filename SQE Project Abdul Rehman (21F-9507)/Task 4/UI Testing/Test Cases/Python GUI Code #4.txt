@@ -1,0 +1,22 @@
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+driver.get("http://localhost:3000")
+
+driver.find_element_by_link_text("Feedback").click()
+
+feedback_textbox = driver.find_element_by_id("feedback_message")
+max_character_limit = 100
+feedback_message = "A" * max_character_limit
+feedback_textbox.send_keys(feedback_message)
+
+submit_button = driver.find_element_by_id("submit_button")
+submit_button.click()
+
+success_message = driver.find_element_by_id("success_message")
+assert "Feedback submitted successfully" in success_message.text
+
+error_messages = driver.find_elements_by_class_name("error-message")
+assert len(error_messages) == 0
+
+driver.close()
