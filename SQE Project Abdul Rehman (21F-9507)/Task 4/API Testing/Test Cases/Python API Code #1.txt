@@ -1,0 +1,18 @@
+import requests
+
+url = "http://localhost:3000/api/feedback"
+
+invalid_feedback_data = {
+    "message": "",
+    "rating": 0,
+    "attachment": "invalid_file.exe"
+}
+
+response = requests.post(url, json=invalid_feedback_data)
+
+assert response.status_code == 400
+
+api_response = response.json()
+assert "message" in api_response and "rating" in api_response and "attachment" in api_response
+
+response.close()
